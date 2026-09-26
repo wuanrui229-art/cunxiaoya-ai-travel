@@ -1,0 +1,19 @@
+{
+  "title": "全国乡村旅游重点村（第一至第四批）",
+  "source_url": "https://sjfw.mct.gov.cn/site/dataservice/rural",
+  "source_as_of": "2022-12-07",
+  "retrieved_at": "2026-09-26",
+  "source_sha256": "7d1c3bedb3adf97c5ef7dadfa9670697a7ce3c29900b83b4025d446051aec889",
+  "record_count": 1399,
+  "province_count": 32,
+  "region_count": 348,
+  "batch_counts": {
+    "1": 320,
+    "2": 680,
+    "3": 199,
+    "4": 200
+  },
+  "coordinate_count": 0,
+  "license_note": "Public government directory facts; no general open-data license identified. No source photographs or editorial descriptions imported.",
+  "name_en_note": "Automatically generated pinyin for search; not official English names."
+}

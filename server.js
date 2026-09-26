@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 3000;
 // 中间件
 app.use(cors());
 app.use(express.json());
+app.get('/api/config', (_req, res) => res.json({ success: true, data: { demo: false } }));
 app.use(express.static(path.join(__dirname, 'public'))); // 服务静态文件（HTML等）
 
 // ============================================================
@@ -580,7 +581,8 @@ app.post('/api/sessions/:token/generate-route', async (req, res) => {
 
     if (DEEPSEEK_API_KEY && DEEPSEEK_API_KEY !== 'your_deepseek_api_key_here') {
       try {
-        const systemPrompt = buildSystemPrompt();
+        const systemPrompt = buildSystemPrompt() + (req.body?.language === 'en'
+          ? '\nOutput language: English. Write the itinerary in English and transliterate Chinese place names. Keep all source facts and CNY prices unchanged.' : '');
         const userPrompt = buildUserPrompt({
           villageDetails, activityDetails, diningDetails, accomDetails,
           departureCity: session.departure_city,
@@ -601,6 +603,7 @@ app.post('/api/sessions/:token/generate-route', async (req, res) => {
         console.log('🤖 正在调用 DeepSeek API 生成路线...');
         console.log(`   Model: ${DEEPSEEK_MODEL} | API: ${DEEPSEEK_API_URL}`);
         const aiResponse = await fetch(DEEPSEEK_API_URL, {
+          signal: AbortSignal.timeout(45000),
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -1271,6 +1274,7 @@ async function parseRequirementsWithAI(customRequirements, travelRelation, activ
     console.log('🤖 正在调用 DeepSeek API 解析用户需求标签...');
 
     const response = await fetch(DEEPSEEK_API_URL, {
+      signal: AbortSignal.timeout(15000),
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1520,6 +1524,7 @@ ${customRequirements || '无额外个性化需求，全程按最优体验规划'
 app.post('/api/pet/chat', async (req, res) => {
   try {
     const { message } = req.body;
+    const english = req.body.language === 'en';
     if (!message || !message.trim()) {
       return res.status(400).json({ success: false, message: '请输入你想问的问题' });
     }
@@ -1531,7 +1536,7 @@ app.post('/api/pet/chat', async (req, res) => {
         '唔…小丫暂时还不会回答问题，请先在 .env 里设置 DEEPSEEK_API_KEY 哦~',
         '对不起呀，我现在是离线模式！等管理员给我接上AI接口，我就能变聪明啦！'
       ];
-      const reply = fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
+      const reply = english ? 'Xiaoya is offline at the moment. You can still explore villages and set up your trip preferences.' : fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
       return res.json({ success: true, data: { reply } });
     }
 
@@ -1554,11 +1559,12 @@ app.post('/api/pet/chat', async (req, res) => {
 
 回复要求：
 - 每条回复控制在150字以内（简短可爱）
-- 用中文回复，保持口语化、亲切感
+- ${english ? 'Reply in English. Your name is Xiaoya, the SylvaPlan travel companion. Use a warm, concise tone.' : '用中文回复，保持口语化、亲切感'}
 - 可以适当使用颜文字或emoji增加可爱度
 - 如果你不知道某个问题的答案，就俏皮地说"这个小丫还不太清楚呢~不过我可以帮你规划乡村旅游路线哦！"`;
 
     const response = await fetch(DEEPSEEK_API_URL, {
+      signal: AbortSignal.timeout(15000),
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1580,12 +1586,12 @@ app.post('/api/pet/chat', async (req, res) => {
       console.error('❌ DeepSeek API 返回错误:', response.status, errText.substring(0, 200));
       return res.json({
         success: true,
-        data: { reply: '哎呀，小丫的脑袋有点转不过来了，稍等一会儿再试试好不好？>_<' }
+        data: { reply: english ? 'Xiaoya could not respond just now. Please try again shortly.' : '哎呀，小丫的脑袋有点转不过来了，稍等一会儿再试试好不好？>_<' }
       });
     }
 
     const result = await response.json();
-    const reply = result.choices?.[0]?.message?.content || '唔…小丫走神了，你再说一遍好不好~';
+    const reply = result.choices?.[0]?.message?.content || (english ? 'Could you try asking that again?' : '唔…小丫走神了，你再说一遍好不好~');
 
     console.log('🐱 桌宠村小丫回复:', reply.substring(0, 100));
     res.json({ success: true, data: { reply } });
@@ -1594,7 +1600,7 @@ app.post('/api/pet/chat', async (req, res) => {
     console.error('❌ 桌宠对话 API 异常:', err.message);
     res.json({
       success: true,
-      data: { reply: '网络好像不太稳定呢…小丫先休息一下，你过会儿再来找我聊天吧~ (´•ω•`)' }
+      data: { reply: req.body?.language === 'en' ? 'The connection is unstable. Please try again shortly.' : '网络好像不太稳定呢…小丫先休息一下，你过会儿再来找我聊天吧~ (´•ω•`)' }
     });
   }
 });

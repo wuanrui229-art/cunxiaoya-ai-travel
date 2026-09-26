@@ -9,3 +9,8 @@ __pycache__/
 .DS_Store
 *.log
 public/avatars/
+
+# Local credentials, invocation logs and generated verification artifacts
+.local/
+.vercel/
+.impeccable/

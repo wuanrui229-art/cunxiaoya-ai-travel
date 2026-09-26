@@ -1,0 +1,357 @@
+/* Same workspace, tuned for daylight. Layout and task state stay unchanged. */
+.theme-toggle {
+  width: 38px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: var(--ink);
+  background: transparent;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  background: var(--sage);
+}
+.theme-toggle .icon {
+  width: 19px;
+  height: 19px;
+}
+:root[data-theme="light"] {
+  --paper: #fafaf7;
+  --white: #fff;
+  --ink: #253b30;
+  --green: #28553c;
+  --green-hover: #1d422d;
+  --muted: #606e64;
+  --line: #dce2da;
+  --sage: #eaf0e6;
+  color-scheme: light;
+  background: var(--paper);
+}
+:root[data-theme="light"] body {
+  background: var(--paper);
+}
+[data-theme="light"]
+  :is(.site-header, .workspace-top, .site-footer, #mode-notice) {
+  background: #fafaf7;
+  border-color: #e0e4dd;
+  color: #33463a;
+}
+[data-theme="light"] .brand img {
+  filter: none;
+}
+[data-theme="light"]
+  :is(
+    .brand small,
+    .chat-title span,
+    .welcome > p,
+    .composer-note,
+    .composer-fields label,
+    .site-footer,
+    .site-footer .text-button,
+    .welcome-explore,
+    #mode-notice
+  ) {
+  color: #606e64;
+}
+[data-theme="light"]
+  :is(
+    .site-header nav a,
+    .site-header nav .nav-assistant,
+    .account-button,
+    .top-actions .mobile-account,
+    .language-toggle
+  ) {
+  color: #4a5d4f;
+}
+[data-theme="light"]
+  :is(.site-header nav a:hover, .site-header nav .nav-assistant:hover) {
+  background: #edf1e9;
+}
+[data-theme="light"] .site-header nav a.active {
+  background: #e5eddf;
+  color: #244d34;
+}
+[data-theme="light"] .account-button .icon {
+  background: #e4eddf;
+  color: #2d573b;
+}
+[data-theme="light"] .new-trip {
+  background: #edf0e9;
+  color: #2e4b37;
+}
+[data-theme="light"] .new-trip:hover {
+  background: #e0e8d9;
+}
+[data-theme="light"] .create-trip {
+  background: #254b36;
+  color: white;
+}
+[data-theme="light"] .welcome-mark {
+  background: #e0eeda;
+  color: #365e42;
+}
+[data-theme="light"] .prompt-ideas button {
+  background: #f1f4ed;
+  color: #4c624f;
+  border-color: #dce4d6;
+}
+[data-theme="light"] .prompt-ideas button:hover {
+  background: #e4edde;
+  border-color: #8ba382;
+}
+[data-theme="light"] :is(input, select, textarea) {
+  background: #fff;
+  color: #2d4133;
+  border-color: #cdd7c8;
+  caret-color: #28553c;
+}
+[data-theme="light"] :is(input, textarea)::placeholder {
+  color: #6a796d;
+}
+[data-theme="light"] .quick-plan {
+  background: #fff;
+  border-color: #c3d0c0;
+  box-shadow: 0 5px 22px -13px #334c3926;
+}
+[data-theme="light"] .quick-plan:focus-within {
+  outline-color: #718e68;
+}
+[data-theme="light"] .quick-plan textarea {
+  background: transparent;
+}
+[data-theme="light"] .quick-plan .composer-fields select {
+  background: transparent;
+  color: #566b58;
+}
+[data-theme="light"] .send-trip {
+  background: #31563c;
+  color: #fff;
+}
+[data-theme="light"] #content {
+  scrollbar-color: #c7d2c2 transparent;
+}
+[data-theme="light"]
+  :is(
+    .plan-form,
+    .form-section,
+    .day-section,
+    .generated-text,
+    .saved-card,
+    .experience-item
+  ) {
+  background: #fff;
+  border-color: #dce3d7;
+  color: #2d4133;
+}
+[data-theme="light"] .plan-summary {
+  background: #eef3e9;
+  border-color: #dce4d5;
+  color: #2b4231;
+}
+[data-theme="light"] :is(.summary-heading, .summary-note) {
+  color: #5e715d;
+}
+[data-theme="light"]
+  :is(.choice span, .tag, .village-card .tag, .suggestions button) {
+  background: #edf3e7;
+  color: #4a644a;
+  border-color: #d4dfcb;
+}
+[data-theme="light"]
+  :is(.choice input:checked + span, .button.primary, .select-village.selected) {
+  background: #31593b;
+  color: white;
+  border-color: #31593b;
+}
+[data-theme="light"] .button.primary:hover {
+  background: #24462d;
+}
+[data-theme="light"] .button.secondary {
+  background: #eef3e9;
+  color: #38563c;
+  border-color: #c9d9c1;
+}
+[data-theme="light"] :is(.text-link, .text-button) {
+  color: #335c3c;
+}
+[data-theme="light"] .steps li {
+  color: #667760;
+}
+[data-theme="light"] .steps li > span {
+  border-color: #d3decd;
+  background: #edf3e8;
+  color: #5b7055;
+}
+[data-theme="light"] .steps li.current {
+  color: #31593b;
+}
+[data-theme="light"] .steps li.current > span {
+  background: #31593b;
+  color: white;
+}
+[data-theme="light"] .request-bubble {
+  background: #e4eedc;
+  color: #344f35;
+}
+[data-theme="light"] :is(.form-actions, .selection-bar, .sticky-actions) {
+  background: #fafaf7f5;
+  border-color: #dbe3d5;
+}
+[data-theme="light"]
+  :is(
+    .village-card.is-selected,
+    .selection-grid .village-card.is-selected,
+    .experience-item.selected
+  ) {
+  background: #edf5e7;
+  border-color: #7d9b71;
+}
+[data-theme="light"] .favorite {
+  background: #fffef8ee;
+  color: #3c5641;
+}
+[data-theme="light"] .favorite.is-favorite {
+  background: #e2efdb;
+  color: #345d38;
+}
+[data-theme="light"] .select-village {
+  background: #edf3e9;
+  color: #3f5e42;
+  border-color: #c5d6be;
+}
+[data-theme="light"] .discover-search {
+  background: #fff;
+  border-color: #d6e0cf;
+}
+[data-theme="light"] .discover-search input {
+  background: transparent;
+}
+[data-theme="light"] .theme-row button {
+  background: #edf3e8;
+  color: #4b644a;
+  border-color: #d4dfcd;
+}
+[data-theme="light"] .theme-row button.active {
+  background: #31593b;
+  color: white;
+}
+[data-theme="light"] :is(.theme-row button:hover, .suggestions button:hover) {
+  background: #dfead7;
+  color: #345832;
+}
+[data-theme="light"] :is(.recommendation-intro, .notice) {
+  background: #edf3e6;
+  color: #4e6548;
+  border-color: #d1ddc7;
+}
+[data-theme="light"] :is(.muse-avatar, .experience-icon, .timeline-icon) {
+  background: #e1ecd9;
+  color: #3d633b;
+}
+[data-theme="light"] .experience-tabs button {
+  color: #5f745a;
+}
+[data-theme="light"] .experience-tabs button.active {
+  background: #e6efde;
+  color: #385d33;
+}
+[data-theme="light"] .selection-toggle {
+  background: #dfedd7;
+  color: #3c6335;
+}
+[data-theme="light"] .price {
+  color: #3f6038;
+}
+[data-theme="light"] .pending-items {
+  background: #f3f3e8;
+  border-color: #dddfc7;
+}
+[data-theme="light"] .pending-items p {
+  color: #666d50;
+}
+[data-theme="light"] dialog {
+  background: #fafcf7;
+  color: #2d4232;
+  border-color: #cad6c3;
+}
+[data-theme="light"] dialog::backdrop {
+  background: #203d3255;
+}
+[data-theme="light"] .dialog-close {
+  color: #4e684e;
+}
+[data-theme="light"] .chat-bubble {
+  background: #eaf2e2;
+  color: #3f5c3c;
+}
+[data-theme="light"] .chat-bubble.user {
+  background: #345b3d;
+  color: #f5f8f0;
+}
+[data-theme="light"] #toast {
+  background: #2e5039;
+  color: #f5f9f1;
+}
+[data-theme="light"] .form-error {
+  color: #a93423;
+}
+[data-theme="light"] :is(.map-pane, #travel-map) {
+  background: #e7eddf;
+}
+[data-theme="light"] :is(.map-search, .map-toolbar .icon-button, .map-caption) {
+  background: #fffffaf0;
+  border-color: #ced9c5;
+  color: #465f40;
+}
+[data-theme="light"] .map-search select {
+  background: transparent;
+}
+[data-theme="light"] .map-dot {
+  background: #557746;
+}
+[data-theme="light"] .map-fallback {
+  color: #56734c;
+}
+[data-theme="light"] .city-marker {
+  background: #fcfff9;
+  color: #365832;
+  border-color: #66865a;
+}
+[data-theme="light"] .maplibregl-ctrl-group {
+  filter: none;
+}
+[data-theme="light"] #map-toggle {
+  color: #3e5e40;
+  border-color: #cad8c1;
+}
+[data-theme="light"] .show-map #map-toggle {
+  background: #31593b;
+  color: #fff;
+}
+[data-theme="light"] :focus-visible {
+  outline-color: #4c7542;
+}
+@media (max-width: 760px) {
+  .theme-toggle {
+    width: 30px;
+    height: 44px;
+  }
+  .top-actions {
+    gap: 2px;
+  }
+  .workspace-top {
+    padding-inline: 10px;
+  }
+  .chat-title {
+    font-size: 12px;
+  }
+  .language-toggle {
+    padding-inline: 3px;
+  }
+  .theme-toggle .icon {
+    width: 17px;
+    height: 17px;
+  }
+}

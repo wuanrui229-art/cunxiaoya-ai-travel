@@ -1,0 +1,2 @@
+# Preserve the CSV export's standard CRLF record endings without whitespace warnings.
+data/*.csv whitespace=cr-at-eol

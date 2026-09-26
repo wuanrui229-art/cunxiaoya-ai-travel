@@ -1,0 +1,223 @@
+.catalogue-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 18px 0 12px;
+}
+.catalogue-filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.catalogue-filters select {
+  padding: 9px;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: 42px;
+}
+.catalogue-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.registry-card {
+  padding: 17px;
+  border: 1px solid var(--line) !important;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 12px;
+}
+.registry-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.registry-card .favorite {
+  position: static;
+  inset: auto;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+}
+.registry-card .card-title {
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  margin: 0;
+}
+.registry-card .card-meta {
+  margin: 0;
+}
+.registry-card > p {
+  margin: 0;
+}
+.registry-card .select-village {
+  margin-top: auto;
+  width: 100%;
+}
+.source-badge {
+  font-size: 10px !important;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 8px 0;
+}
+.registry-heading .source-badge {
+  margin: 0;
+}
+.provenance {
+  padding: 22px;
+  margin: 22px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--sage);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.provenance p {
+  margin: 8px 0;
+  color: var(--muted);
+}
+.provenance a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.provenance .icon {
+  width: 16px;
+  height: 16px;
+}
+.city-options {
+  max-height: 230px;
+  overflow: auto;
+  padding: 5px 4px;
+  scrollbar-width: thin;
+}
+.city-options .choice-row {
+  gap: 7px;
+}
+.city-options .choice span {
+  font-size: 12px;
+  padding: 9px 11px;
+}
+.city-search-label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 12px;
+}
+.city-search-label input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  min-height: 42px;
+}
+.trip-editor .city-options {
+  max-height: 260px;
+}
+.trip-editor .city-options .choice {
+  margin: 0;
+}
+.page-shell > [data-action="load-more"] {
+  display: block;
+  margin: 25px auto 0;
+}
+@media (max-width: 760px) {
+  .catalogue-filters select {
+    font-size: 16px;
+  }
+  .page-shell .village-grid:has(.registry-card) {
+    grid-template-columns: 1fr;
+  }
+  .registry-card .card-title {
+    font-size: 16px;
+  }
+}
+
+/* Composer controls share one geometry, independent of global form-field rules. */
+.quick-plan > .composer-bottom {
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.quick-plan .composer-fields {
+  min-width: 0;
+  flex: 0 1 auto;
+  align-items: center;
+  gap: 8px;
+}
+.quick-plan .composer-fields label {
+  display: flex;
+  align-items: center;
+  flex: 0 1 auto;
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 10px;
+  gap: 7px;
+  letter-spacing: normal;
+}
+.quick-plan .composer-fields :is(input, select) {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  height: 42px;
+  min-height: 42px;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: normal;
+}
+.quick-plan #quick-city {
+  width: clamp(6rem, 11vw, 9rem);
+}
+.quick-plan .duration-field {
+  position: relative;
+}
+.quick-plan #quick-duration {
+  width: auto;
+  padding-inline-end: 22px;
+  cursor: pointer;
+}
+.quick-plan .select-chevron {
+  position: absolute;
+  inset-inline-end: 9px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  pointer-events: none;
+  display: flex;
+}
+.quick-plan .composer-fields .icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+.quick-plan .composer-fields label:focus-within {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+@media (max-width: 760px) {
+  .quick-plan .composer-fields :is(input, select) {
+    font-size: 16px;
+  }
+  .quick-plan #quick-city {
+    width: 7rem;
+  }
+}
